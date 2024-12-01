@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input, select, button {
+            width: 250;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Taxi Management</h1>
+
+    <h2>Create New Taxi</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="taxi_name">Taxi Name:</label>
+        <input type="text" id="taxi_name" name="taxi_name" required>
+
+        <label for="license_plate">License Plate:</label>
+        <input type="text" id="license_plate" name="license_plate" required>
+
+        <label for="driver_name">Driver Name:</label>
+        <input type="text" id="driver_name" name="driver_name" required>
+
+        <label for="passenger_capacity">Passenger Capacity:</label>
+        <input type="number" id="passenger_capacity" name="passenger_capacity" required>
+
+        <label for="car_model">Car Model:</label>
+        <input type="text" id="car_model" name="car_model" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Available">Available</option>
+            <option value="Busy">Busy</option>
+            <option value="Under Maintenance">Under Maintenance</option>
+        </select>
+
+        <br><button type="submit">Create Taxi</button>
+    </form>
+
+    <h2>Taxi List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Taxi Name</th>
+                <th>License Plate</th>
+                <th>Driver</th>
+                <th>Capacity</th>
+                <th>Model</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for taxi in taxi %}
+            <tr>
+                <td>{{ taxi.taxi_name }}</td>
+                <td>{{ taxi.license_plate }}</td>
+                <td>{{ taxi.driver_name }}</td>
+                <td>{{ taxi.passenger_capacity }}</td>
+                <td>{{ taxi.car_model }}</td>
+                <td>{{ taxi.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
