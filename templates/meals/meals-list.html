@@ -44,7 +44,7 @@
 
     <h3>Create New Meal</h3>
 
-    <form method="POST">
+    <form method="get">
         {% csrf_token %}
         <label for="meal_name">Meal Name:</label>
         <input type="text" id="meal_name" name="meal_name" required>

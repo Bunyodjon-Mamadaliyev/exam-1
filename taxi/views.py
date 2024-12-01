@@ -7,7 +7,7 @@ def taxi_list(request):
     license_plate = request.GET.get('license_plate')
     driver_name = request.GET.get('driver_name')
     passenger_capacity = request.GET.get('passenger_capacity')
-    car_model = request.GET.get('max_students')
+    car_model = request.GET.get('car_model')
     status = request.GET.get('status')
 
     if taxi_name and license_plate and driver_name and passenger_capacity and car_model and status:

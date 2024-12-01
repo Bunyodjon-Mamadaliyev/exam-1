@@ -47,7 +47,7 @@
 
     <h2>Create New Taxi</h2>
 
-    <form method="POST">
+    <form method="get">
         {% csrf_token %}
         <label for="taxi_name">Taxi Name:</label>
         <input type="text" id="taxi_name" name="taxi_name" required>
